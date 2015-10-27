@@ -1,42 +1,32 @@
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="Shift_JIS">
-<script type="text/javascript"><!--
-   function ShowLength( str ) {
-      document.getElementById("titleview_inputlength").innerHTML = str.length + "文字";
-      document.getElementById("inputlength").innerHTML = str.length + "文字";
-      var num = parseInt(document.getElementById("maxinput").value);
-      if(str.length > num){
-         document.getElementById("inputlength").style.color = "red";
-      }else{
-         document.getElementById("inputlength").style.color = "white";
-      }
-   }
-   function EditNum(){
-     var str = document.getElementById("editor").value;
-     document.getElementById("titleview_inputlength").innerHTML = str.length + "文字";
-      document.getElementById("inputlength").innerHTML = str.length + "文字";
-      var num = parseInt(document.getElementById("maxinput").value);
-      if(str.length > num){
-         document.getElementById("inputlength").style.color = "red";
-      }else{
-         document.getElementById("inputlength").style.color = "white";
-      }
-   }
-// --></script>
-<title id="titleview_inputlength">0文字</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>Text Counter</title>
+<meta name="description" content="文字数をカウントできます">
+<meta name="author" content="tanjoin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/counter.css">
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="resource/icon-128×128.png">
 </head>
-<body style="color:white;background-color:black;">
- <div align=center >
-  <div style="width:800px; margin-top:20px;">
-   <textarea id="title" style="font-size:larger;color:white;background-color:transparent;border-color:black;border-bottom-color:white;" cols="100" rows="1">タイトル</textarea>
-   <p align=left style="font-size:smaller;color:white;background-color:transparent;" >
-    <span id="inputlength">0文字</span>　/　
-    <input id="maxinput" type="text" size="1" istyle=4 style="font-size:larger;color:white;background-color:transparent;border-color:black;border-bottom-color:white;" onblur="EditNum()">
-    文字
-   </p>
-   <textarea id="editor" style="font-size:larger;color:white;background-color:transparent;" cols="100" rows="50" onkeyup="ShowLength(value);"></textarea>
+<body>
+
+<div class="container">
+  <div class="content">
+    <p id="information">
+      <span id="inputlength">0</span> &nbsp;/&nbsp;
+      <input id="maxinput" type="text" onblur="editMaxCount()" /> 文字
+    </p>
+    <textarea id="editor" onkeyup="showLength(value);"></textarea>
   </div>
- </div>
+</div>
+
+<!-- SCRIPTS -->
+<script src="js/counter.js"></script>
 </body>
 </html>

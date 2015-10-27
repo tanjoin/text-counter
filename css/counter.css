@@ -1,0 +1,53 @@
+html {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  color: white;
+  background-color: black;
+  height: 100%;
+  margin: 0;
+}
+
+.header {
+  display: block;
+  background-color: #222222;
+}
+
+.container {
+  height: 100%;
+  margin: 0;
+}
+
+.content {
+  overflow: hidden;
+  width: 90%;
+  margin: 0 auto 0 auto;
+  height: 100%;
+}
+
+#information {
+  font-size: smaller;
+  color: white;
+  background-color: transparent;
+  width: 100%;
+}
+
+#maxinput {
+  font-size: larger;
+  color: white;
+  background-color: transparent;
+  border-color: black;
+  border-bottom-color: white;
+}
+
+#editor {
+  height: 90%;
+  margin: 0;
+  width: 99%;
+  font-size: larger;
+  color: white;
+  background-color: #222222;
+  border-color: black;
+}
