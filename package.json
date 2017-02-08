@@ -1,0 +1,31 @@
+{
+  "name": "text-counter",
+  "version": "1.0.1",
+  "description": "文字数をカウントする",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanjoin/text-counter.git"
+  },
+  "author": "tanjoin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tanjoin/text-counter/issues"
+  },
+  "homepage": "https://github.com/tanjoin/text-counter#readme",
+  "devDependencies": {
+    "coffee-script": "^1.12.3",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.0.0",
+    "gulp-coffee": "^2.3.3",
+    "gulp-concat": "^2.6.1",
+    "gulp-pug": "^3.2.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^2.0.1",
+    "run-sequence": "^1.2.2"
+  }
+}
