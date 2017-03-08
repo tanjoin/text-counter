@@ -3,3 +3,15 @@
 昔作ったやつ
 
 http://tanjoin.github.io/text-counter/
+
+## Setup
+
+```
+npm install
+```
+
+## Build
+
+```
+gulp
+```

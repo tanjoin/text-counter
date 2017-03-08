@@ -4,9 +4,10 @@ block contents
   .container
     .content
       .dataio
-        input#read_file(type="file" accept="text/plain")
+        input#read_file(type="file" accept="text/*,text/markdown,application/json")
         input#read_button(type="button" value="ファイル選択")
         input#save_button(type="button" value="保存")
+        span#save_name(type="text" contenteditable="true") textfile.txt
         input#clear_button(type="button" value="クリア" style="display:none;")
       div#information
         span#inputlength=0

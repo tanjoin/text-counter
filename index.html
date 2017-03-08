@@ -15,9 +15,9 @@
     <div class="container">
       <div class="content">
         <div class="dataio">
-          <input id="read_file" type="file" accept="text/plain">
+          <input id="read_file" type="file" accept="text/*,text/markdown,application/json">
           <input id="read_button" type="button" value="ファイル選択">
-          <input id="save_button" type="button" value="保存">
+          <input id="save_button" type="button" value="保存"><span id="save_name" type="text" contenteditable="true">textfile.txt</span>
           <input id="clear_button" type="button" value="クリア" style="display:none;">
         </div>
         <div id="information"><span id="inputlength">0</span> &nbsp;/&nbsp;

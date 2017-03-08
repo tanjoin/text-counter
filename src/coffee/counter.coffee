@@ -35,7 +35,10 @@ saveText = () ->
   blob = new Blob([str], {type: "text/plain"})
   url = window.URL.createObjectURL blob
   link = document.createElement 'a'
-  link.download = "textfile.text"
+  filename = document.getElementById("save_name")
+  filename = filename.innerText.replace("\n","").replace(/\s+$/g, "")
+  filename = "textfile.txt" unless filename?
+  link.download = filename
   link.href = url
   link.click()
 
@@ -45,6 +48,7 @@ loadFile = () ->
   file = document.getElementById('read_file').files[0]
   unless file
     return
+  document.getElementById('save_name').innerText = file.name
   reader = new FileReader()
   reader.onload = (event) ->
     data = event.target.result
@@ -62,6 +66,12 @@ clear = () ->
 fireReadFile = () ->
   document.getElementById('read_file').click()
 
+noNewLine = (e) ->
+  if e.keyCode is 13
+    e.preventDefault()
+
+
+
 window.onload = () ->
   oldCount = 0
   updateLines ""
@@ -71,3 +81,4 @@ window.onload = () ->
   document.getElementById('read_button').addEventListener 'click', fireReadFile
   document.getElementById('read_file').addEventListener 'change', loadFile
   document.getElementById('clear_button').addEventListener 'click', clear
+  document.getElementById('save_name').addEventListener 'keydown', noNewLine
