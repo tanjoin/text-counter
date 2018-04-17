@@ -4,7 +4,8 @@
   "description": "文字数をカウントする",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/tanjoin/text-counter#readme",
   "devDependencies": {
     "coffee-script": "^1.12.3",
+    "coffeescript": "^2.2.4",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.0.0",
@@ -27,5 +29,8 @@
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^2.0.1",
     "run-sequence": "^1.2.2"
+  },
+  "dependencies": {
+    "npm": "^5.8.0"
   }
 }
