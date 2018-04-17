@@ -70,6 +70,13 @@ noNewLine = (e) ->
   if e.keyCode is 13
     e.preventDefault()
 
+parseJson = () ->
+  try
+    text = document.getElementById('editor').value;
+    json = JSON.parse(text);
+    document.getElementById('editor').select();
+    document.execCommand("insertText", false, JSON.stringify(json, null, 2));
+  catch error
 
 
 window.onload = () ->
@@ -82,3 +89,4 @@ window.onload = () ->
   document.getElementById('read_file').addEventListener 'change', loadFile
   document.getElementById('clear_button').addEventListener 'click', clear
   document.getElementById('save_name').addEventListener 'keydown', noNewLine
+  document.getElementById('json_parse_button').addEventListener 'click', parseJson
