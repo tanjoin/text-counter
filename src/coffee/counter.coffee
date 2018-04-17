@@ -75,7 +75,10 @@ parseJson = () ->
     text = document.getElementById('editor').value;
     json = JSON.parse(text);
     document.getElementById('editor').select();
-    document.execCommand("insertText", false, JSON.stringify(json, null, 2));
+    if text.includes('\n')
+      document.execCommand("insertText", false, JSON.stringify(json));      
+    else
+      document.execCommand("insertText", false, JSON.stringify(json, null, 2));
   catch error
 
 
