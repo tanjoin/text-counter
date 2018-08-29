@@ -19,18 +19,18 @@
   "homepage": "https://github.com/tanjoin/text-counter#readme",
   "devDependencies": {
     "coffee-script": "^1.12.3",
-    "coffeescript": "^2.2.4",
+    "coffeescript": "^2.3.1",
     "del": "^2.2.2",
-    "gulp": "^3.9.1",
-    "gulp-clean-css": "^3.0.0",
+    "gulp": "^4.0.0",
+    "gulp-clean-css": "^3.10.0",
     "gulp-coffee": "^2.3.3",
     "gulp-concat": "^2.6.1",
     "gulp-pug": "^3.2.0",
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^2.0.1",
-    "run-sequence": "^1.2.2"
+    "run-sequence": "^2.2.1"
   },
   "dependencies": {
-    "npm": "^5.8.0"
+    "npm": "^6.4.0"
   }
 }

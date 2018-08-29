@@ -39,11 +39,9 @@ gulp.task 'css', () ->
     .pipe cleanCSS()
     .pipe gulp.dest './bin/css'
 
-gulp.task 'compile', () ->
-  runSequence('clean', 'coffee', 'sass', 'pug', 'js', 'css')
+gulp.task 'compile', gulp.series('clean', 'coffee', 'sass', 'pug', 'js', 'css')
 
-gulp.task 'default', () ->
-  runSequence('compile')
+gulp.task 'default', gulp.series('compile')
 
 gulp.task 'watch', () ->
   coffeePath = './src/coffee/*.coffee'
