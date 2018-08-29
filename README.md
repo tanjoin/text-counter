@@ -2,7 +2,7 @@
 
 昔作ったやつ
 
-http://tanjoin.github.io/text-counter/
+https://tanjoin.github.io/text-counter/
 
 ## Setup
 
