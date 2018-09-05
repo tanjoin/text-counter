@@ -80,6 +80,7 @@ parseJson = () ->
     else
       document.execCommand("insertText", false, JSON.stringify(json, null, 2));
   catch error
+    console.log(error)
 
 uniqueList = () ->
   try
@@ -89,6 +90,12 @@ uniqueList = () ->
     document.execCommand("insertText", false, list.join('\n'));
   catch error
     console.log(error)
+
+sortList = () ->
+  try
+    document.getElementById('editor').value = document.getElementById('editor').value.split('\n').filter((text) => text.length > 0).sort().join('\n').replace(/^\n/g, '');
+  catch error
+    console.log(error);
 
 window.onload = () ->
   oldCount = 0
@@ -102,3 +109,4 @@ window.onload = () ->
   document.getElementById('save_name').addEventListener 'keydown', noNewLine
   document.getElementById('json_parse_button').addEventListener 'click', parseJson
   document.getElementById('unique_list').addEventListener 'click', uniqueList
+  document.getElementById('sort_list').addEventListener 'click', sortList
