@@ -76,11 +76,19 @@ parseJson = () ->
     json = JSON.parse(text);
     document.getElementById('editor').select();
     if text.includes('\n')
-      document.execCommand("insertText", false, JSON.stringify(json));      
+      document.execCommand("insertText", false, JSON.stringify(json));
     else
       document.execCommand("insertText", false, JSON.stringify(json, null, 2));
   catch error
 
+uniqueList = () ->
+  try
+    text = document.getElementById('editor').value;
+    list = Array.from(new Set(text.split('\n')));
+    document.getElementById('editor').select();
+    document.execCommand("insertText", false, list.join('\n'));
+  catch error
+    console.log(error)
 
 window.onload = () ->
   oldCount = 0
@@ -93,3 +101,4 @@ window.onload = () ->
   document.getElementById('clear_button').addEventListener 'click', clear
   document.getElementById('save_name').addEventListener 'keydown', noNewLine
   document.getElementById('json_parse_button').addEventListener 'click', parseJson
+  document.getElementById('unique_list').addEventListener 'click', uniqueList
