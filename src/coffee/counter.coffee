@@ -93,7 +93,28 @@ uniqueList = () ->
 
 sortList = () ->
   try
-    document.getElementById('editor').value = document.getElementById('editor').value.split('\n').filter((text) => text.length > 0).sort().join('\n').replace(/^\n/g, '');
+    document.getElementById('editor').select();
+    document.execCommand("insertText", false, document.getElementById('editor').value.split('\n').filter((text) => text.length > 0).sort().join('\n').replace(/^\n/g, ''));
+  catch error
+    console.log(error);
+
+displayBottom = () ->
+  if document.getElementById('btmfl').style.display == 'inline'
+    document.getElementById('btmfl').style.display = 'none';
+  else
+    document.getElementById('btmfl').style.display = 'inline';
+
+replaceText = () ->
+  try
+    pattern = document.getElementById('regex_pattern').innerText;
+    text = document.getElementById('replacing_text').innerText;
+    result = pattern.match(/\/(.*)\/(.*)/);
+    if result
+      regex = new RegExp(result[1], result[2])
+    else
+      regex = new RegExp(pattern)
+    document.getElementById('editor').select();
+    document.execCommand("insertText", false, document.getElementById('editor').value.replace(new RegExp(regex), text));
   catch error
     console.log(error);
 
@@ -110,3 +131,7 @@ window.onload = () ->
   document.getElementById('json_parse_button').addEventListener 'click', parseJson
   document.getElementById('unique_list').addEventListener 'click', uniqueList
   document.getElementById('sort_list').addEventListener 'click', sortList
+  document.getElementById('replace_show').addEventListener 'click', displayBottom
+  document.getElementById('replace_button').addEventListener 'click', replaceText
+  document.getElementById('regex_pattern').addEventListener 'keydown', noNewLine
+  document.getElementById('replacing_text').addEventListener 'keydown', noNewLine

@@ -137,3 +137,31 @@ input[type="button"]:hover {
   font-size: 16px;
   border-bottom: solid 1px #888888;
 }
+
+/* floating bottom */
+
+#regex_pattern, #replacing_text {
+  background-color: #333;
+  color: #7eeea8;
+  border: 0;
+  outline: 0;
+  font-size: 16px;
+  border-bottom: solid 1px #888888;
+  width: 95%;
+  display: inline-block;
+}
+
+.substr {
+  margin: 8px;
+}
+
+#btmfl {
+  border: 1px solid #7eeea8;
+  color: #7eeea8;
+  background-color: #333;
+  position: fixed;
+  bottom: 0;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+}

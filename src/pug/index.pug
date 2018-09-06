@@ -12,6 +12,7 @@ block contents
         input#json_parse_button(type="button" value="JSON")
         input#unique_list(type="button" value="ユニーク")
         input#sort_list(type="button" value="ソート")
+        input#replace_show(type="button" value="置換")
       div#information
         span#inputlength=0
         |  &nbsp;/&nbsp;
@@ -20,3 +21,11 @@ block contents
       #text-container
         textarea#editor
       p#linenav
+      #btmfl(style="display:none;")
+        input#replace_button(type="button" value="実行")
+        .substr
+          span="対象: "
+          #regex_pattern(type="button" contenteditable="true") //g
+        .substr
+          span="置換: "
+          #replacing_text(type="button" contenteditable="true")
