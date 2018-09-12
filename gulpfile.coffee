@@ -6,7 +6,6 @@ concat = require 'gulp-concat'
 uglify = require 'gulp-uglify'
 cleanCSS = require 'gulp-clean-css'
 del = require 'del'
-runSequence = require 'run-sequence'
 
 gulp.task 'clean', () ->
   del './gen/**/*'
@@ -41,10 +40,10 @@ gulp.task 'css', () ->
 
 gulp.task 'compile', gulp.series('clean', 'coffee', 'sass', 'pug', 'js', 'css')
 
-gulp.task 'default', gulp.series('compile')
-
 gulp.task 'watch', () ->
   coffeePath = './src/coffee/*.coffee'
   pugPath = './src/pug/*.pug'
   sassPath = './src/sass/*.scss'
-  gulp.watch [coffeePath, pugPath, sassPath], ['compile']
+  gulp.watch [coffeePath, pugPath, sassPath], gulp.series('compile')
+
+gulp.task 'default', gulp.series('compile', 'watch')
