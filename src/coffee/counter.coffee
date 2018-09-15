@@ -8,11 +8,14 @@ showLength = (str) ->
   unless typeof str is 'string'
     str = document.getElementById('editor').value
   inputLength = document.getElementById 'inputlength'
-  textNode = document.createTextNode(str.length)
+  target = str;
+  if JSON.parse(localStorage.ignoreNewline)
+    target = target.replace /\r?\n/g, ''
+  textNode = document.createTextNode(target.length)
   inputLength.replaceChild textNode, inputLength.lastChild
   max = parseInt document.getElementById('maxinput').value
-  updateLines(str)
-  if str.length > max
+  updateLines(target)
+  if target.length > max
     inputLength.style.color = 'red'
   else
     inputLength.style.color = 'white'
@@ -72,57 +75,88 @@ noNewLine = (e) ->
 
 parseJson = () ->
   try
-    text = document.getElementById('editor').value;
-    json = JSON.parse(text);
-    document.getElementById('editor').select();
+    text = document.getElementById('editor').value
+    json = JSON.parse(text)
+    document.getElementById('editor').select()
     if text.includes('\n')
-      document.execCommand("insertText", false, JSON.stringify(json));
+      document.execCommand("insertText", false, JSON.stringify(json))
     else
-      document.execCommand("insertText", false, JSON.stringify(json, null, 2));
+      document.execCommand("insertText", false, JSON.stringify(json, null, 2))
   catch error
-    console.log(error)
+    console.log error
 
 uniqueList = () ->
   try
-    text = document.getElementById('editor').value;
-    list = Array.from(new Set(text.split('\n')));
-    document.getElementById('editor').select();
-    document.execCommand("insertText", false, list.join('\n'));
+    text = document.getElementById('editor').value
+    list = Array.from(new Set(text.split('\n')))
+    document.getElementById('editor').select()
+    document.execCommand("insertText", false, list.join('\n'))
   catch error
-    console.log(error)
+    console.log error
 
 sortList = () ->
   try
-    document.getElementById('editor').select();
-    document.execCommand("insertText", false, document.getElementById('editor').value.split('\n').filter((text) => text.length > 0).sort().join('\n').replace(/^\n/g, ''));
+    document.getElementById('editor').select()
+    document.execCommand("insertText", false, document.getElementById('editor').value.split('\n').filter((text) => text.length > 0).sort().join('\n').replace(/^\n/g, ''))
   catch error
-    console.log(error);
+    console.log error
 
 displayBottom = () ->
   if document.getElementById('btmfl').style.display == 'inline'
-    document.getElementById('btmfl').style.display = 'none';
+    document.getElementById('btmfl').style.display = 'none'
   else
-    document.getElementById('btmfl').style.display = 'inline';
+    document.getElementById('btmfl').style.display = 'inline'
 
 replaceText = () ->
   try
-    pattern = document.getElementById('regex_pattern').innerText;
-    text = document.getElementById('replacing_text').innerText;
-    result = pattern.match(/\/(.*)\/(.*)/);
+    pattern = document.getElementById('regex_pattern').innerText
+    text = document.getElementById('replacing_text').innerText
+    result = pattern.match(/\/(.*)\/(.*)/)
     if result
       regex = new RegExp(result[1], result[2])
     else
       regex = new RegExp(pattern)
-    document.getElementById('editor').select();
-    document.execCommand("insertText", false, document.getElementById('editor').value.replace(new RegExp(regex), text));
+    document.getElementById('editor').select()
+    document.execCommand("insertText", false, document.getElementById('editor').value.replace(new RegExp(regex), text))
   catch error
-    console.log(error);
+    console.log error
+
+resizeEditor = () ->
+  try
+    height = document.body.clientHeight - 124
+    document.getElementById('text-container').style.height = "#{height}px"
+    document.getElementById('editor').style.height = "#{height}px"
+  catch error
+    console.log error
+
+applyIgnoreNewLine = () ->
+  if JSON.parse(localStorage.ignoreNewline)
+    document.getElementById('ignore_newline').style.backgroundColor = '#13bb8e';
+    document.getElementById('ignore_newline').style.color = '#dffff1';
+  else
+    document.getElementById('ignore_newline').style.backgroundColor = '#000000';
+    document.getElementById('ignore_newline').style.color = '#7eeea8';
+
+clickIgnoreNewline = () ->
+  localStorage.ignoreNewline = !JSON.parse(localStorage.ignoreNewline)
+  applyIgnoreNewLine()
+  showLength()
+
+clearEditor = () ->
+  result = window.confirm("データを削除しますか？")
+  if result
+    document.getElementById('editor').select()
+    document.execCommand("insertText", false, '')
 
 window.onload = () ->
   oldCount = 0
   updateLines ""
+  resizeEditor()
+  applyIgnoreNewLine()
+  window.addEventListener 'resize', resizeEditor
   document.getElementById('maxinput').addEventListener 'blur', editMaxCount
-  document.getElementById('editor').addEventListener 'keyup', showLength
+  document.addEventListener 'keyup', showLength
+  document.addEventListener 'keypress', showLength
   document.getElementById('save_button').addEventListener 'click', saveText
   document.getElementById('read_button').addEventListener 'click', fireReadFile
   document.getElementById('read_file').addEventListener 'change', loadFile
@@ -135,3 +169,5 @@ window.onload = () ->
   document.getElementById('replace_button').addEventListener 'click', replaceText
   document.getElementById('regex_pattern').addEventListener 'keydown', noNewLine
   document.getElementById('replacing_text').addEventListener 'keydown', noNewLine
+  document.getElementById('ignore_newline').addEventListener 'click', clickIgnoreNewline
+  document.getElementById('clear_editor').addEventListener 'click', clearEditor

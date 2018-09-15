@@ -13,6 +13,8 @@ block contents
         input#unique_list(type="button" value="ユニーク")
         input#sort_list(type="button" value="ソート")
         input#replace_show(type="button" value="置換")
+        input#ignore_newline(type="button" value="改行無視")
+        input#clear_editor(type="button" value="クリア")
       div#information
         span#inputlength=0
         |  &nbsp;/&nbsp;
@@ -22,10 +24,11 @@ block contents
         textarea#editor
       p#linenav
       #btmfl(style="display:none;")
-        input#replace_button(type="button" value="実行")
-        .substr
-          span="対象: "
-          #regex_pattern(type="button" contenteditable="true") //g
-        .substr
-          span="置換: "
-          #replacing_text(type="button" contenteditable="true")
+        #btm-inner
+          input#replace_button(type="button" value="実行")
+          .substr
+            span="対象: "
+            #regex_pattern(type="button" contenteditable="true") //g
+          .substr
+            span="置換: "
+            #replacing_text(type="button" contenteditable="true")

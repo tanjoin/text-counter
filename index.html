@@ -23,6 +23,8 @@
           <input id="unique_list" type="button" value="ユニーク">
           <input id="sort_list" type="button" value="ソート">
           <input id="replace_show" type="button" value="置換">
+          <input id="ignore_newline" type="button" value="改行無視">
+          <input id="clear_editor" type="button" value="クリア">
         </div>
         <div id="information"><span id="inputlength">0</span> &nbsp;/&nbsp;
           <input id="maxinput" type="text">&nbsp;文字
@@ -32,12 +34,14 @@
         </div>
         <p id="linenav"></p>
         <div id="btmfl" style="display:none;">
-          <input id="replace_button" type="button" value="実行">
-          <div class="substr"><span>対象: </span>
-            <div id="regex_pattern" type="button" contenteditable="true">//g</div>
-          </div>
-          <div class="substr"><span>置換: </span>
-            <div id="replacing_text" type="button" contenteditable="true"></div>
+          <div id="btm-inner">
+            <input id="replace_button" type="button" value="実行">
+            <div class="substr"><span>対象: </span>
+              <div id="regex_pattern" type="button" contenteditable="true">//g</div>
+            </div>
+            <div class="substr"><span>置換: </span>
+              <div id="replacing_text" type="button" contenteditable="true"></div>
+            </div>
           </div>
         </div>
       </div>
