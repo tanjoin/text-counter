@@ -150,6 +150,8 @@ clearEditor = () ->
 
 window.onload = () ->
   oldCount = 0
+  if localStorage.ignoreNewline == undefined
+    localStorage.ignoreNewline = false
   updateLines ""
   resizeEditor()
   applyIgnoreNewLine()
