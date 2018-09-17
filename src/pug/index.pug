@@ -16,6 +16,7 @@ block contents
         input#sort_list(type="button" value="ソート")
         input#replace_show(type="button" value="置換")
         input#ignore_newline(type="button" value="改行無視")
+        input#first_increment_button(type="button" value="ｲﾝｸﾘﾒﾝﾄ・ﾃﾞｸﾘﾒﾝﾄ")
         input#clear_editor(type="button" value="クリア")
       div#information
         span#inputlength=0
@@ -25,7 +26,7 @@ block contents
       #text-container
         textarea#editor
       p#linenav
-      #btmfl(style="display:none;")
+      #btmfl.btmf(style="display:none;")
         #btm-inner
           input#replace_button(type="button" value="実行")
           .substr
@@ -34,3 +35,13 @@ block contents
           .substr
             span="置換: "
             #replacing_text(type="button" contenteditable="true")
+      #btmf2.btmf(style="display:none;")
+        #btm-inner
+          input#first_increment_apply_button(type="button" value="ｲﾝｸﾘﾒﾝﾄ")
+          input#first_decrement_apply_button(type="button" value="ﾃﾞｸﾘﾒﾝﾄ")
+          .substr
+            span="開始位置: "
+            input#first_increment_decrement_start.border(type="tel" name="first_increment_decrement_start" placeholder="0")
+          .substr
+            span="終了位置: "
+            input#first_increment_decrement_end.border(type="tel" name="first_increment_decrement_end")

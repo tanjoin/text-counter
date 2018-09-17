@@ -155,7 +155,13 @@ input[type="button"]:hover {
   margin: 8px;
 }
 
-#btmfl {
+input.border {
+  border: 1px solid #7eeea8;
+  color: #7eeea8;
+  background-color: #222;
+}
+
+.btmf {
   border: 1px solid #7eeea8;
   color: #7eeea8;
   background-color: #333;

@@ -101,11 +101,14 @@ sortList = () ->
   catch error
     console.log error
 
-displayBottom = () ->
-  if document.getElementById('btmfl').style.display == 'inline'
-    document.getElementById('btmfl').style.display = 'none'
+applyDisplayButton = (id) ->
+  if document.getElementById(id).style.display == 'inline'
+    document.getElementById(id).style.display = 'none'
   else
-    document.getElementById('btmfl').style.display = 'inline'
+    Array.from(document.querySelectorAll('.btmf')).forEach((div) -> div.style.display = 'none')
+    document.getElementById(id).style.display = 'inline'
+
+displayBottom = () -> applyDisplayButton('btmfl')
 
 replaceText = () ->
   try
@@ -148,6 +151,48 @@ clearEditor = () ->
     document.getElementById('editor').select()
     document.execCommand("insertText", false, '')
 
+displayBottom2 = () ->  applyDisplayButton('btmf2')
+
+execFistIndex = (start, end, apply) ->
+  value = document.getElementById('editor').value
+  splitedValue = value.split '\n'
+  unless splitedValue
+    splitedValue = []
+  if isNaN(start) or start < 0
+    start = 0
+  if isNaN(end) or end > splitedValue.length
+    end = splitedValue.length
+  result = []
+  for target, index in splitedValue
+    if index < start or index > end
+      result.push target
+      continue
+    match = /[-0-9][0-9]*/.exec(target)
+    unless match
+      result.push target
+      continue
+    idx = match.index
+    num = parseInt match[0], 10
+    if isNaN(num)
+      result.push target
+      continue
+    num = apply(num)
+    incStr = target.slice(0, idx) + target.slice(idx +  match[0].length)
+    incStr = incStr.slice(0, idx) + num + incStr.slice(idx)
+    result.push incStr
+  document.getElementById('editor').select()
+  document.execCommand("insertText", false, result.join('\n'))
+
+fistIncrement = () ->
+  start = parseInt document.getElementById('first_increment_decrement_start').value, 10
+  end = parseInt document.getElementById('first_increment_decrement_end').value, 10
+  execFistIndex(start, end, (num) -> num + 1);
+
+firstDecrement = () ->
+  start = parseInt document.getElementById('first_increment_decrement_start').value, 10
+  end = parseInt document.getElementById('first_increment_decrement_end').value, 10
+  execFistIndex(start, end, (num) -> num - 1);
+
 window.onload = () ->
   oldCount = 0
   if localStorage.ignoreNewline == undefined
@@ -173,3 +218,6 @@ window.onload = () ->
   document.getElementById('replacing_text').addEventListener 'keydown', noNewLine
   document.getElementById('ignore_newline').addEventListener 'click', clickIgnoreNewline
   document.getElementById('clear_editor').addEventListener 'click', clearEditor
+  document.getElementById('first_increment_button').addEventListener 'click', displayBottom2
+  document.getElementById('first_increment_apply_button').addEventListener 'click', fistIncrement
+  document.getElementById('first_decrement_apply_button').addEventListener 'click', firstDecrement

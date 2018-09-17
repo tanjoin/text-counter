@@ -24,6 +24,7 @@
           <input id="sort_list" type="button" value="ソート">
           <input id="replace_show" type="button" value="置換">
           <input id="ignore_newline" type="button" value="改行無視">
+          <input id="first_increment_button" type="button" value="ｲﾝｸﾘﾒﾝﾄ・ﾃﾞｸﾘﾒﾝﾄ">
           <input id="clear_editor" type="button" value="クリア">
         </div>
         <div id="information"><span id="inputlength">0</span> &nbsp;/&nbsp;
@@ -33,7 +34,7 @@
           <textarea id="editor"></textarea>
         </div>
         <p id="linenav"></p>
-        <div id="btmfl" style="display:none;">
+        <div class="btmf" id="btmfl" style="display:none;">
           <div id="btm-inner">
             <input id="replace_button" type="button" value="実行">
             <div class="substr"><span>対象: </span>
@@ -41,6 +42,18 @@
             </div>
             <div class="substr"><span>置換: </span>
               <div id="replacing_text" type="button" contenteditable="true"></div>
+            </div>
+          </div>
+        </div>
+        <div class="btmf" id="btmf2" style="display:none;">
+          <div id="btm-inner">
+            <input id="first_increment_apply_button" type="button" value="ｲﾝｸﾘﾒﾝﾄ">
+            <input id="first_decrement_apply_button" type="button" value="ﾃﾞｸﾘﾒﾝﾄ">
+            <div class="substr"><span>開始位置: </span>
+              <input class="border" id="first_increment_decrement_start" type="tel" name="first_increment_decrement_start" placeholder="0">
+            </div>
+            <div class="substr"><span>終了位置: </span>
+              <input class="border" id="first_increment_decrement_end" type="tel" name="first_increment_decrement_end">
             </div>
           </div>
         </div>
