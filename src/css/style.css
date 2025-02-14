@@ -8,79 +8,34 @@ a:hover {
 }
 
 html {
-  height: 100%;
+  height: 100vh;
   margin: 0;
 }
 
 body {
   color: #ffffff;
   background-color: #240a18;
-  height: 100%;
+  height: 100vh;
   margin: 0;
 }
 
-h1 {
-  font-size: 1.2em;
-  line-height: 1.1;
-}
-
 #app {
-  height: 100%;
+  height: 100vh;
   margin: 0;
 }
 
 /** Customize CSS **/
 
-#information {
-  font-size: smaller;
-  color: white;
-  background-color: transparent;
-  margin-bottom: 8px;
-  margin-left: 32px;
-}
-
-textarea#editor, textarea#dummy-editor {
-  line-height: 1.0em;
-  height: 80vh;
-  width: 95vw;
-  font-size: larger;
-  color: white;
-  background-color: #222222;
-  border-color: black;
-}
-
-textarea#dummy-editor {
-  display: none;
-}
-
-#editor-container {
-  width: 100%;
-  margin: 0;
-  text-align: center;
-}
-
-#line-navigation {
-  color: #AAAAAA;
-  background-color: #444444;
-  width: 100%;
-  text-align: left;
-  font-size: smaller;
-}
-
 #tool-bar {
   display: inline-flex;
-  margin-left: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
-#title {
-  margin-right: 16px;
-}
-
-#tool-bar > div {
-  margin-top: 8px;
-  margin-bottom: 8px;
-  margin-left: 0px;
-  margin-right: 0px;
+#tool-bar h1 {
+  font-size: 1.2em;
+  line-height: 1.1;
+  margin-right: 8px;
 }
 
 #tool-bar button, dialog button {
@@ -90,9 +45,11 @@ textarea#dummy-editor {
   border-color: #7eeea8;
   background-color: black;
   color: #7eeea8;
-  margin: 8px;
-  line-height: 1.3em;
   text-align: center;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-top: 16px;
+  line-height: 1.3em;
 }
 
 #tool-bar button:hover, dialog button:hover {
@@ -102,7 +59,9 @@ textarea#dummy-editor {
   border-color: #13bb8e;
   background-color: #13bb8e;
   color: #dffff1;
-  margin: 8px;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-top: 16px;
 }
 
 #tool-bar button:active, dialog button:active, dialog button:focus {
@@ -112,7 +71,9 @@ textarea#dummy-editor {
   border-color: #13bb8e;
   background-color: #13bb8e;
   color: #dffff1;
-  margin: 8px;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-top: 16px;
 }
 
 #tool-bar button:disabled, dialog button:disabled {
@@ -122,7 +83,9 @@ textarea#dummy-editor {
   border-color: #7eeea8;
   background-color: black;
   color: #7eeea8;
-  margin: 8px;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-top: 16px;
 }
 
 #tool-bar button:disabled:hover, dialog button:disabled:hover {
@@ -132,7 +95,9 @@ textarea#dummy-editor {
   border-color: #7eeea8;
   background-color: black;
   color: #7eeea8;
-  margin: 8px;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-top: 16px;
 }
 
 #tool-bar #file-status {
@@ -143,10 +108,53 @@ textarea#dummy-editor {
   padding: 4px;
   font-size: 16px;
   border-bottom: solid 1px #888888;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-top: 16px;
 }
 
 #tool-bar input[type="file"] {
   display: none;
+}
+
+#information {
+  font-size: smaller;
+  color: white;
+  background-color: transparent;
+  padding-top: 0;
+  padding-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+#editor-container {
+  text-align: center;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+textarea#editor, textarea#dummy-editor {
+  line-height: 1.0em;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: larger;
+  color: white;
+  background-color: #222222;
+  border-color: black;
+  field-sizing: content;
+}
+
+textarea#dummy-editor {
+  display: none;
+}
+
+#line-navigation {
+  color: #AAAAAA;
+  background-color: #444444;
+  width: 100%;
+  text-align: left;
+  font-size: smaller;
+  margin: 0 auto;
 }
 
 dialog {

@@ -10,6 +10,7 @@ import { htmlSortLine, setupSortLine } from "./button/sort-line.js";
 import { htmlReplaceText, htmlReplaceTextDialog, setupReplaceText } from "./button/replace-text.js";
 import { htmlIgnoreNewline, setupIgnoreNewline, isIgnoreNewline } from "./button/ignore-newline.js";
 import { htmlIncrementDecrement, htmlIncrementDecrementDialog, setupIncrementDecrement } from "./button/increment-decrement.js";
+import { setupTextArea } from "./textarea.js";
 
 document.querySelector("#app").innerHTML = `
   <div id="tool-bar">
@@ -26,10 +27,10 @@ document.querySelector("#app").innerHTML = `
   <div id="editor-container">
     <textarea id="editor"></textarea>
     <textarea id="dummy-editor" readonly></textarea>
+    ${htmlLineNavigation()}
   </div>
   ${htmlReplaceTextDialog()}
   ${htmlIncrementDecrementDialog()}
-  ${htmlLineNavigation()}
 `;
 
 const editorElement = document.querySelector("#editor");
@@ -79,3 +80,4 @@ setupSortLine(editorElement, changeEditorValue);
 setupReplaceText(editorElement, changeEditorValue);
 setupIgnoreNewline(editorElement, updateIgnoreNewline);
 setupIncrementDecrement(editorElement, dummyEditorElement, switchDummyEditor, changeEditorValue);
+setupTextArea();
