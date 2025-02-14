@@ -10,8 +10,14 @@ https://tanjoin.github.io/text-counter/
 npm install
 ```
 
+## Dev
+
+```
+npm run dev
+```
+
 ## Build
 
 ```
-gulp
+npm run build
 ```

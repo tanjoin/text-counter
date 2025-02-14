@@ -1,64 +1,15 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>Text Counter</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="author" content="tanjoin">
-    <meta name="description" content="文字数をカウントできます">
-    <link rel="apple-touch-icon" href="./resource/icon-128×128.png">
-    <link rel="shortcut icon" href="./resource/icon-128×128.png">
-    <link rel="stylesheet" type="text/css" href="./bin/css/counter.css">
+    <meta charset="UTF-8" />
+    <link rel="icon" href="res/icon-128×128.png" />
+    <link rel="apple-touch-icon" href="res/icon-128×128.png" />
+    <link rel="shortcut icon" href="res/icon-128×128.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
   </head>
-  <body><a href="https://github.com/tanjoin/text-counter"><img id="ribbon" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
-    <div class="container">
-      <div class="content">
-        <div class="dataio">
-          <input id="read_file" type="file" accept="text/*,text/markdown,application/json">
-          <input id="read_button" type="button" value="ファイル選択">
-          <input id="save_button" type="button" value="保存"><span id="save_name" type="text" contenteditable="true">textfile.txt</span>
-          <input id="clear_button" type="button" value="クリア" style="display:none;">
-          <input id="json_parse_button" type="button" value="JSON">
-          <input id="unique_list" type="button" value="ユニーク">
-          <input id="sort_list" type="button" value="ソート">
-          <input id="replace_show" type="button" value="置換">
-          <input id="ignore_newline" type="button" value="改行無視">
-          <input id="first_increment_button" type="button" value="ｲﾝｸﾘﾒﾝﾄ・ﾃﾞｸﾘﾒﾝﾄ">
-          <input id="clear_editor" type="button" value="クリア">
-        </div>
-        <div id="information"><span id="inputlength">0</span> &nbsp;/&nbsp;
-          <input id="maxinput" type="text">&nbsp;文字
-        </div>
-        <div id="text-container">
-          <textarea id="editor"></textarea>
-        </div>
-        <p id="linenav"></p>
-        <div class="btmf" id="btmfl" style="display:none;">
-          <div id="btm-inner">
-            <input id="replace_button" type="button" value="実行">
-            <div class="substr"><span>対象: </span>
-              <div id="regex_pattern" type="button" contenteditable="true">//g</div>
-            </div>
-            <div class="substr"><span>置換: </span>
-              <div id="replacing_text" type="button" contenteditable="true"></div>
-            </div>
-          </div>
-        </div>
-        <div class="btmf" id="btmf2" style="display:none;">
-          <div id="btm-inner">
-            <input id="first_increment_apply_button" type="button" value="ｲﾝｸﾘﾒﾝﾄ">
-            <input id="first_decrement_apply_button" type="button" value="ﾃﾞｸﾘﾒﾝﾄ">
-            <div class="substr"><span>開始位置: </span>
-              <input class="border" id="first_increment_decrement_start" type="tel" name="first_increment_decrement_start" placeholder="0">
-            </div>
-            <div class="substr"><span>終了位置: </span>
-              <input class="border" id="first_increment_decrement_end" type="tel" name="first_increment_decrement_end">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <script type="text/javascript" src="./bin/js/counter.js"></script>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
