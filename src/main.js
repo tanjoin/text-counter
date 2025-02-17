@@ -11,6 +11,7 @@ import { htmlReplaceText, htmlReplaceTextDialog, setupReplaceText } from "./butt
 import { htmlIgnoreNewline, setupIgnoreNewline, isIgnoreNewline } from "./button/ignore-newline.js";
 import { htmlIncrementDecrement, htmlIncrementDecrementDialog, setupIncrementDecrement } from "./button/increment-decrement.js";
 import { setupTextArea } from "./textarea.js";
+import { htmlImageViewer, setupImageViewer, updateImageViewer } from "./image-viewer.js";
 
 document.querySelector("#app").innerHTML = `
   <div id="tool-bar">
@@ -28,6 +29,7 @@ document.querySelector("#app").innerHTML = `
     <textarea id="editor"></textarea>
     <textarea id="dummy-editor" readonly></textarea>
     ${htmlLineNavigation()}
+    ${htmlImageViewer()}
   </div>
   ${htmlReplaceTextDialog()}
   ${htmlIncrementDecrementDialog()}
@@ -70,10 +72,21 @@ function switchDummyEditor() {
   }
 }
 
+function loadImage(file) {
+  if (!file) {
+    return;
+  }
+  console.log(file.type);
+  if (!file.type.includes("image/")) {
+    return;
+  }
+  updateImageViewer(file);
+}
+
 setupTextManager(editorElement, changeEditorValue);
 setupInformation(editorElement, isIgnoreNewline());
 setupLineNavigation(editorElement);
-setupDataIO(editorElement, changeEditorValue);
+setupDataIO(editorElement, changeEditorValue, loadImage);
 setupJsonManager(editorElement, changeEditorValue, showError);
 setupUniqueLine(editorElement, changeEditorValue);
 setupSortLine(editorElement, changeEditorValue);
@@ -81,3 +94,4 @@ setupReplaceText(editorElement, changeEditorValue);
 setupIgnoreNewline(editorElement, updateIgnoreNewline);
 setupIncrementDecrement(editorElement, dummyEditorElement, switchDummyEditor, changeEditorValue);
 setupTextArea();
+setupImageViewer();

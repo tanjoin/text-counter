@@ -10,7 +10,7 @@ export function htmlDataIO() {
     `;
 };
 
-export function setupDataIO(editorElement, onChangeEditorValueListener) {
+export function setupDataIO(editorElement, onChangeEditorValueListener, onLoadImageListener) {
     const fileInput = document.querySelector('#file-input');
     const fileLoadButton = document.querySelector('#file-load-button');
     const fileSaveButton = document.querySelector('#file-save-button');
@@ -24,6 +24,13 @@ export function setupDataIO(editorElement, onChangeEditorValueListener) {
     fileInput.addEventListener('change', () => {
         const file = fileInput.files[0];
         if (!file) {
+            return;
+        }
+
+        if (file.type.includes('image/')) {
+            if (onLoadImageListener) {
+                onLoadImageListener(file);
+            }
             return;
         }
 
@@ -74,6 +81,13 @@ export function setupDataIO(editorElement, onChangeEditorValueListener) {
             return;
         }
 
+        if (file.type.includes('image/')) {
+            if (onLoadImageListener) {
+                onLoadImageListener(file);
+            }
+            return;
+        }
+
         const reader = new FileReader();
         reader.onload = () => {
             if (onChangeEditorValueListener) {
@@ -85,8 +99,22 @@ export function setupDataIO(editorElement, onChangeEditorValueListener) {
     });
 
     document.addEventListener('paste', (event) => {
-        const file = event.clipboardData.files[0];
+        if (event.clipboardData.types[1] === 'Files') {
+            if (onLoadImageListener) {
+                onLoadImageListener(event.clipboardData.items[1].getAsFile());
+            }
+        }
+
+        const file = event.clipboardData.items[0].getAsFile();
         if (!file) {
+            return;
+        }
+
+        if (file.type.includes('image/')) {
+            console.log('image');
+            if (onLoadImageListener) {
+                onLoadImageListener(file);
+            }
             return;
         }
 
