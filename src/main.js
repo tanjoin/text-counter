@@ -12,6 +12,7 @@ import { htmlIgnoreNewline, setupIgnoreNewline, isIgnoreNewline } from "./button
 import { htmlIncrementDecrement, htmlIncrementDecrementDialog, setupIncrementDecrement } from "./button/increment-decrement.js";
 import { setupTextArea } from "./textarea.js";
 import { htmlImageViewer, setupImageViewer, updateImageViewer } from "./image-viewer.js";
+import { htmlJekyllPage, setupJekyllPage } from "./button/jekyll-page.js";
 
 document.querySelector("#app").innerHTML = `
   <div id="tool-bar">
@@ -23,6 +24,7 @@ document.querySelector("#app").innerHTML = `
     ${htmlReplaceText()}
     ${htmlIgnoreNewline()}
     ${htmlIncrementDecrement()}
+    ${htmlJekyllPage()}
   </div>
   ${htmlInformation()}
   <div id="editor-container">
@@ -95,3 +97,4 @@ setupIgnoreNewline(editorElement, updateIgnoreNewline);
 setupIncrementDecrement(editorElement, dummyEditorElement, switchDummyEditor, changeEditorValue);
 setupTextArea();
 setupImageViewer();
+setupJekyllPage(changeEditorValue);
