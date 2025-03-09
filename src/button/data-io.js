@@ -149,3 +149,8 @@ export function setupDataIO(editorElement, onChangeEditorValueListener, onLoadIm
     fileStatus.spellcheck = false;
     fileStatus.textContent = 'textfile.txt';
 };
+
+export function updateFileStatus(filename) {
+    const fileStatus = document.querySelector('#file-status');
+    fileStatus.textContent = filename;
+};

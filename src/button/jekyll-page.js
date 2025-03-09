@@ -6,7 +6,7 @@ export function htmlJekyllPage() {
     `;
 };
 
-export function setupJekyllPage(onChangeEditorValueListener) {
+export function setupJekyllPage(onChangeEditorValueListener, onChangeFileStatusListener) {
     const jekyllPageNikkiButton = document.querySelector('#jekyll-page-nikki-button');
 
     jekyllPageNikkiButton.addEventListener('click', () => {
@@ -16,6 +16,7 @@ export function setupJekyllPage(onChangeEditorValueListener) {
         let day = ('0' + date.getDate()).slice(-2);
         const text = `---\nlayout: post\ntitle:  ""\ncategories: unknown\ndate: "${year}-${month}-${day} 00:00:00"\n---\n\n`;
         onChangeEditorValueListener(text);
+        onChangeFileStatusListener(`${year}-${month}-${day}-report.md`);
     });
 
     const HIDDEN_COMMAND = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "KeyB", "KeyA"];

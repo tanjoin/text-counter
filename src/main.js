@@ -2,7 +2,7 @@ import "./css/style.css";
 import { htmlInformation, setupInformation, updateInformation, updateIgnoreNewline as updateIgnoreNewline } from "./information.js";
 import { setupTextManager, updateTextManager } from "./text-manager.js";
 import { htmlLineNavigation, setupLineNavigation, updateLineNavigation, updateLineNavigationWithMessage } from "./line-navigation.js";
-import { htmlDataIO, setupDataIO } from "./button/data-io.js";
+import { htmlDataIO, setupDataIO, updateFileStatus } from "./button/data-io.js";
 import { htmlJsonManager, setupJsonManager } from "./button/json-manager.js";
 import { mazentaColorHtml } from "./color-html.js";
 import { htmlUniqueLine, setupUniqueLine } from "./button/unique-line.js";
@@ -58,6 +58,10 @@ function changeEditorValue(value) {
   updateInformation(editorElement);
 }
 
+function changeFileStatus(fileName) {
+  updateFileStatus(fileName);
+}
+
 function showError(error) {
   updateLineNavigationWithMessage(editorElement, mazentaColorHtml(error));
 }
@@ -97,4 +101,4 @@ setupIgnoreNewline(editorElement, updateIgnoreNewline);
 setupIncrementDecrement(editorElement, dummyEditorElement, switchDummyEditor, changeEditorValue);
 setupTextArea();
 setupImageViewer();
-setupJekyllPage(changeEditorValue);
+setupJekyllPage(changeEditorValue, changeFileStatus);
